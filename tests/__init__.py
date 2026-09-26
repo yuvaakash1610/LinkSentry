@@ -1,0 +1,1 @@
+"""LinkSentry test suite."""
