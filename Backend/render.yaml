@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: linksentry-backend
+    runtime: python
+    rootDir: .
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: APP_NAME
+        value: LinkSentry Backend
+      - key: APP_VERSION
+        value: 1.0.0
+      - key: ENVIRONMENT
+        value: production
+      - key: API_PREFIX
+        value: /api
+      - key: TEXT_MODEL_PATH
+        value: ""
+      - key: TEXT_VECTORIZER_PATH
+        value: ""
+      - key: URL_MODEL_PATH
+        value: ""
+      - key: TEXT_WEIGHT
+        value: "0.45"
+      - key: URL_WEIGHT
+        value: "0.35"
+      - key: RULE_WEIGHT
+        value: "0.20"
+      - key: MAX_TEXT_LENGTH
+        value: "10000"
+      - key: MAX_URL_LENGTH
+        value: "4096"
+      - key: RATE_LIMIT_ENABLED
+        value: "true"
+      - key: RATE_LIMIT_ANALYZE
+        value: 60/minute
+      - key: ALLOWED_ORIGINS
+        value: "*"
